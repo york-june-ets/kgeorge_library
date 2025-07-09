@@ -1,11 +1,8 @@
-import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
         Library library = new Library("York Park Library", "123 Main St");
@@ -16,6 +13,9 @@ public class Main {
 
     static public void populateLibrary(Library library, String bookDataFile) {
         try (InputStream bookData = Main.class.getResourceAsStream(bookDataFile)) {
+            if (bookData == null) {
+                throw new Exception("Cannot find file: " + bookDataFile);
+            }
             Scanner scanner = new Scanner(bookData);
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
