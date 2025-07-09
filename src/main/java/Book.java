@@ -6,9 +6,9 @@ public class Book {
     private int year;
     private boolean rented;
 
-    public Book(String title, List<Author> author, int year) {
+    public Book(String title, List<Author> authors, int year) {
         this.title = title;
-        this.authors = author;
+        this.authors = authors;
         this.year= year;
         this.rented = false;
     }

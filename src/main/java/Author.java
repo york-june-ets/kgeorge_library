@@ -7,6 +7,7 @@ public class Author {
 
     public Author(String name) {
         this.name = name;
+        this.books = new ArrayList<Book>();
     }
 
     // GETTERS

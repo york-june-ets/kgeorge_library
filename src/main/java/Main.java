@@ -1,8 +1,39 @@
+import java.io.File;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
         Library library = new Library("York Park Library", "123 Main St");
         library.printData();
+        populateLibrary(library, "/YorkParkLibrary_Books.txt");
+        library.printData();
+    }
+
+    static public void populateLibrary(Library library, String bookDataFile) {
+        try (InputStream bookData = Main.class.getResourceAsStream(bookDataFile)) {
+            Scanner scanner = new Scanner(bookData);
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] props = line.split("\\|");
+                if (props.length != 3) {
+                    throw new Exception("Invalid data format");
+                }
+                String title = props[0];
+                String[] authors = props[1].split(",");
+                String year = props[2];
+                List<Author> authorList = new ArrayList<Author>();
+                for (String author: authors) {
+                    library.addAuthorByName(author);
+                }
+                library.addBook(new Book(title, authorList, Integer.parseInt(year)));
+            }
+        } catch (Exception e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
     }
 }

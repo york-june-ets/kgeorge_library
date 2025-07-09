@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
@@ -11,6 +12,10 @@ public class Library {
     public Library(String name, String location) {
         this.name = name;
         this.location = location;
+        this.books = new ArrayList<Book>();
+        this.authors = new ArrayList<Author>();
+        this.members = new ArrayList<Member>();
+        this.rentals = new ArrayList<Rental>();
     }
 
     // GETTERS
@@ -53,12 +58,16 @@ public class Library {
             this.books.add(book);
         }
         for (Author author: book.getAuthors()) {
-            if (!this.authors.contains(author)) {
-                this.authors.add(author);
-            }
             if (!author.getBooks().contains(book)) {
                 author.addBook(book);
             }
+        }
+    }
+
+    public void addAuthorByName(String authorName) {
+        if (this.authors.stream().noneMatch(author -> author.getName().equals(authorName))) {
+            Author newAuthor = new Author(authorName);
+            this.authors.add(newAuthor);
         }
     }
 
