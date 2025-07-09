@@ -56,32 +56,8 @@ public class Library {
             if (!this.authors.contains(author)) {
                 this.authors.add(author);
             }
-        }
-    }
-
-    public void addBooks(List<Book> books) {
-        for(Book book : books) {
-            if (!this.books.contains(book)) {
-                this.books.add(book);
-            }
-            for (Author author: book.getAuthors()) {
-                if (!this.authors.contains(author)) {
-                    this.authors.add(author);
-                }
-            }
-        }
-    }
-
-    public void addAuthor(Author author) {
-        if (!this.authors.contains(author)) {
-            this.authors.add(author);
-        }
-    }
-
-    public void addAuthors(List<Author> authors) {
-        for(Author author : authors) {
-            if (!this.authors.contains(author)) {
-                this.authors.add(author);
+            if (!author.getBooks().contains(book)) {
+                author.addBook(book);
             }
         }
     }
@@ -89,14 +65,6 @@ public class Library {
     public void addMember(Member member) {
         if (!this.members.contains(member)) {
             this.members.add(member);
-        }
-    }
-
-    public void addMembers(List<Member> members) {
-        for(Member member : members) {
-            if (!this.members.contains(member)) {
-                this.members.add(member);
-            }
         }
     }
 
