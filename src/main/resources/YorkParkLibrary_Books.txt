@@ -1,7 +1,7 @@
-The Hunger Games|Suzanne Collins|2008
-Catching Fire|Suzanne Collins|2009
-Mockingjay|Suzanne Collins|2010
-The Ballad of Songbirds and Snakes|Suzanne Collins|2020
-Sunrise on the Reaping|Suzanne Collins|2025
-The Vampire Diaries: The Awakening|L.J. Smith|1991
-The Talisman|Peter Straub, Stephen King|1984
+The Hunger Games|Suzanne Collins|2008|7
+Catching Fire|Suzanne Collins|2009|5
+Mockingjay|Suzanne Collins|2010|4
+The Ballad of Songbirds and Snakes|Suzanne Collins|2020|3
+Sunrise on the Reaping|Suzanne Collins|2025|8
+The Vampire Diaries: The Awakening|L.J. Smith|1991|3
+The Talisman|Peter Straub, Stephen King|1984|1
