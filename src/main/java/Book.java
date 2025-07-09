@@ -50,4 +50,12 @@ public class Book {
     public void setReturned() {
         this.rented = false;
     }
+
+    // Print
+    public void printData() {
+        System.out.println("Title: " + this.title);
+        System.out.println("Authors: " + this.authors);
+        System.out.println("Year: " + this.year);
+        System.out.println("Rented: " + this.rented);
+    }
 }

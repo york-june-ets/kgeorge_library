@@ -64,10 +64,14 @@ public class Library {
         }
     }
 
-    public void addAuthorByName(String authorName) {
-        if (this.authors.stream().noneMatch(author -> author.getName().equals(authorName))) {
+    public Author addAuthorByName(String authorName) {
+        Author existingAuthor = this.authors.stream().filter(author -> author.getName().equals(authorName)).findAny().orElse(null);
+        if (existingAuthor == null) {
             Author newAuthor = new Author(authorName);
             this.authors.add(newAuthor);
+            return newAuthor;
+        } else {
+            return existingAuthor;
         }
     }
 
@@ -82,15 +86,4 @@ public class Library {
             this.rentals.add(rental);
         }
     }
-
-    public void printData() {
-        System.out.println("Name: " + this.name);
-        System.out.println("Location: " + this.location);
-        System.out.println("Books: " + this.books);
-        System.out.println("Authors: " + this.authors);
-        System.out.println("Members: " + this.members);
-        System.out.println("Rentals: " + this.rentals);
-    }
-
-
 }

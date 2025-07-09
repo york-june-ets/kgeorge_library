@@ -1,39 +1,14 @@
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
+        //Create a library
         Library library = new Library("York Park Library", "123 Main St");
-        library.printData();
-        populateLibrary(library, "/YorkParkLibrary_Books.txt");
-        library.printData();
-    }
+        System.out.println("Created library: " + library.getName());
 
-    static public void populateLibrary(Library library, String bookDataFile) {
-        try (InputStream bookData = Main.class.getResourceAsStream(bookDataFile)) {
-            if (bookData == null) {
-                throw new Exception("Cannot find file: " + bookDataFile);
-            }
-            Scanner scanner = new Scanner(bookData);
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                String[] props = line.split("\\|");
-                if (props.length != 3) {
-                    throw new Exception("Invalid data format");
-                }
-                String title = props[0];
-                String[] authors = props[1].split(",");
-                String year = props[2];
-                List<Author> authorList = new ArrayList<Author>();
-                for (String author: authors) {
-                    library.addAuthorByName(author);
-                }
-                library.addBook(new Book(title, authorList, Integer.parseInt(year)));
-            }
-        } catch (Exception e) {
-            System.out.println("Error reading file: " + e.getMessage());
-        }
+        // Populate the library with data from file
+        LibraryUtils.populateLibrary(library, "/YorkParkLibrary_Books.txt");
+        System.out.println(library);
+
+
+
     }
 }
