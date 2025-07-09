@@ -2,6 +2,7 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-
+        Library library = new Library("York Park Library", "123 Main St");
+        library.printData();
     }
 }
