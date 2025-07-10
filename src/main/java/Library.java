@@ -4,10 +4,10 @@ import java.util.List;
 public class Library {
     private String name;
     private String location;
-    private List<Book> books;
-    private List<Author> authors;
-    private List<Member> members;
-    private List<Rental> rentals;
+    private final List<Book> books;
+    private final List<Author> authors;
+    private final List<Member> members;
+    private final List<Rental> rentals;
 
     public Library(String name, String location) {
         this.name = name;
@@ -54,36 +54,40 @@ public class Library {
 
     // ADD
     public void addBook(Book book) {
-        if (!this.books.contains(book)) {
-            this.books.add(book);
+        if (book == null) {
+            throw new IllegalArgumentException("Book is required");
         }
-        for (Author author: book.getAuthors()) {
-            if (!author.getBooks().contains(book)) {
-                author.addBook(book);
-            }
+        if (this.books.contains(book)) {
+            throw new IllegalArgumentException("Book already exists");
         }
+        this.books.add(book);
     }
-
-    public Author addAuthorByName(String authorName) {
-        Author existingAuthor = this.authors.stream().filter(author -> author.getName().equals(authorName)).findAny().orElse(null);
-        if (existingAuthor == null) {
-            Author newAuthor = new Author(authorName);
-            this.authors.add(newAuthor);
-            return newAuthor;
-        } else {
-            return existingAuthor;
+    public void addAuthor(Author author) {
+        if (author == null) {
+            throw new IllegalArgumentException("Author is required");
         }
+        if (this.authors.contains(author)) {
+            throw new IllegalArgumentException("Author already exists");
+        }
+        this.authors.add(author);
     }
-
     public void addMember(Member member) {
-        if (!this.members.contains(member)) {
-            this.members.add(member);
+        if (member == null) {
+            throw new IllegalArgumentException("Member is required");
         }
+        if (this.members.contains(member)) {
+            throw new IllegalArgumentException("Member already exists");
+        }
+        this.members.add(member);
     }
 
-    public void addRental(Rental rental) {
-        if (!this.rentals.contains(rental)) {
-            this.rentals.add(rental);
-        }
+    // SEARCH
+    public Author getAuthorByName(String name) {
+        Author author = this.authors.stream().filter(a -> a.getName().equals(name)).findAny().orElse(null);
+        return author;
+    }
+    public Book searchBook(String title, String authorName) {
+        Book book = this.books.stream().filter(b -> b.getTitle().equals(title) && b.getAuthors().stream().anyMatch(a -> a.getName().equals(authorName))).findAny().orElse(null);
+        return book;
     }
 }

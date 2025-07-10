@@ -1,7 +1,8 @@
-The Hunger Games|Suzanne Collins|2008|7
-Catching Fire|Suzanne Collins|2009|5
-Mockingjay|Suzanne Collins|2010|4
-The Ballad of Songbirds and Snakes|Suzanne Collins|2020|3
-Sunrise on the Reaping|Suzanne Collins|2025|8
-The Vampire Diaries: The Awakening|L.J. Smith|1991|3
-The Talisman|Peter Straub, Stephen King|1984|1
+9780439023528|The Hunger Games|Suzanne Collins|2008|7
+9780439023481|The Hunger Games|Suzanne Collins|2008|7
+9780545586177|Catching Fire|Suzanne Collins|2009|5
+9780545663267|Mockingjay|Suzanne Collins|2010|4
+9781338635171|The Ballad of Songbirds and Snakes|Suzanne Collins|2020|3
+9781546171461|Sunrise on the Reaping|Suzanne Collins|2025|8
+9780061020001|The Vampire Diaries: The Awakening|L.J. Smith|1991|3
+9781451697216|The Talisman|Peter Straub, Stephen King|1984|1
