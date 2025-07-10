@@ -83,11 +83,21 @@ public class Library {
         this.members.add(member);
     }
 
+    public void addRental(Rental rental) {
+        if (rental == null) {
+            throw new IllegalArgumentException("Rental is required");
+        }
+        if (this.rentals.contains(rental)) {
+            throw new IllegalArgumentException("Rental already exists");
+        }
+        this.rentals.add(rental);
+    }
+
     // SEARCH
     public Author getAuthorByName(String name) {
         return this.authors.stream().filter(a -> a.getName().equals(name)).findFirst().orElse(null);
     }
-    public Book searchBookByTitle(String title, String authorName) {
+    public Book searchBook(String title, String authorName) {
         return this.books.stream().filter(b -> b.getTitle().equals(title) && b.getAuthors().stream().anyMatch(a -> a.getName().equals(authorName))).findFirst().orElse(null);
     }
     public List<Book> searchBookByAuthor(Author author) {

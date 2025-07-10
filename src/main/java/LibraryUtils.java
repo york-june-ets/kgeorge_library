@@ -19,9 +19,9 @@ public class LibraryUtils {
                     throw new Exception("Invalid data format");
                 }
                 int ID = Integer.parseInt(props[0]);
-                String name = props[1];
+                String name = props[1].trim();
                 String bio = props[2];
-                String gender = props[3].isEmpty() ? "" : props[3];
+                String gender = props[3].isEmpty() ? "" : props[3].trim();
                 LocalDate birthDate = LocalDate.parse(props[4]);
                 LocalDate deathDate = props[5].isEmpty() ? null : LocalDate.parse(props[5]);
                 library.addAuthor(new Author(ID, name, bio, gender, birthDate, deathDate));
@@ -44,13 +44,14 @@ public class LibraryUtils {
                 if (props.length != 5) {
                     throw new Exception("Invalid data format");
                 }
-                String ISBN = props[0];
-                String title = props[1];
+                String ISBN = props[0].trim();
+                String title = props[1].trim();
                 String[] authorNames = props[2].split(",");
                 String year = props[3];
                 String inStock = props[4];
                 List<Author> authorList = new ArrayList<Author>();
                 for (String authorName: authorNames) {
+                    authorName = authorName.trim();
                     Author existingAuthor = library.getAuthorByName(authorName);
                     if (existingAuthor == null) {
                         throw new Exception("Author not found: " + authorName);
@@ -63,4 +64,5 @@ public class LibraryUtils {
             System.out.println("Error reading file: " + e.getMessage());
         }
     }
+
 }

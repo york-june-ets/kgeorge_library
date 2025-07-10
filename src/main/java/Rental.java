@@ -17,6 +17,9 @@ public class Rental {
         if (rentalDurationDays <= 0) {
             throw new IllegalArgumentException("Rental duration must be greater than 0");
         }
+        if (book.getInStock() < 1) {
+            throw new IllegalArgumentException("Book is out of stock");
+        }
         this.ID = counter;
         counter++;
         this.book = book;
@@ -24,6 +27,7 @@ public class Rental {
         this.dateRented = LocalDate.now();
         this.dateDue = this.dateRented.plusDays(rentalDurationDays);
         this.dateReturned = null;
+        this.book.removeFromStock(1);
     }
     // Constructor for existing rentals (may or may not be active)
     public Rental(Book book, Member member, LocalDate dateRented, int rentalDurationDays, LocalDate dateDue, LocalDate dateReturned) {
@@ -68,5 +72,12 @@ public class Rental {
     }
     public void setDateReturned(LocalDate dateReturned) {
         this.dateReturned = dateReturned;
+        this.book.addToStock(1);
+    }
+
+    // PRINT
+    @Override
+    public String toString() {
+        return "Rental: " + this.book.getTitle() + " (" + this.dateRented + " - " + this.dateDue + ")";
     }
 }
