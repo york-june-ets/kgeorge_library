@@ -1,0 +1,4 @@
+1|Suzanne Collins|Suzanne Collins, born August 10, 1962, is an American author and television writer, best known for the young adult dystopian series The Hunger Games and the children's fantasy series The Underland Chronicles. She began her career writing for children's television, including shows like Clarissa Explains It All and Clifford's Puppy Days. Her experiences with her father, a Vietnam War veteran and military historian, heavily influenced her writing, particularly her focus on war and its impact. |female|1962-08-10|
+2|L.J. Smith||female|1958-09-04|2025-03-08
+3|Peter Straub||male|1943-03-02|2022-09-04
+4|Stephen King||male|1947-09-21|

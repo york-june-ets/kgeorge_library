@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Library {
     private String name;
@@ -83,11 +85,13 @@ public class Library {
 
     // SEARCH
     public Author getAuthorByName(String name) {
-        Author author = this.authors.stream().filter(a -> a.getName().equals(name)).findAny().orElse(null);
-        return author;
+        return this.authors.stream().filter(a -> a.getName().equals(name)).findFirst().orElse(null);
     }
-    public Book searchBook(String title, String authorName) {
-        Book book = this.books.stream().filter(b -> b.getTitle().equals(title) && b.getAuthors().stream().anyMatch(a -> a.getName().equals(authorName))).findAny().orElse(null);
-        return book;
+    public Book searchBookByTitle(String title, String authorName) {
+        return this.books.stream().filter(b -> b.getTitle().equals(title) && b.getAuthors().stream().anyMatch(a -> a.getName().equals(authorName))).findFirst().orElse(null);
+    }
+    public List<Book> searchBookByAuthor(Author author) {
+        return this.books.stream().filter(b -> b.getAuthors().stream().anyMatch(a -> a.getID() == author.getID())).collect(Collectors.toList());
+
     }
 }

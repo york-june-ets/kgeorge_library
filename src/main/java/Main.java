@@ -8,12 +8,14 @@ public class Main {
         System.out.println("Created library: " + library.getName());
 
         // Populate the library with data from file
-        LibraryUtils.populateLibrary(library, "/YorkParkLibrary_Books.txt");
+        LibraryUtils.uploadAuthors(library, "/YorkParkLibrary_Authors.txt");
+        System.out.println(library);
+        LibraryUtils.uploadBooks(library, "/YorkParkLibrary_Books.txt");
         System.out.println(library);
 
-        // Adding a new customer
-        Member member = new Member("Max", "Feige", "123-456-7890", "mfeige@yorksolutions.com");
-        library.addMember(member);
-        System.out.println(library);
+//        // Adding a new customer
+//        Member member = new Member("Max", "Feige", "123-456-7890", "mfeige@yorksolutions.com");
+//        library.addMember(member);
+//        System.out.println(library);
     }
 }
