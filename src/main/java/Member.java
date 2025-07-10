@@ -1,27 +1,47 @@
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 public class Member {
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String email;
-    private List<Book> activeRentals;
 
     public Member(String firstName, String lastName, String phoneNumber, String email) {
+        if (firstName == null || lastName == null) {
+            throw new IllegalArgumentException("First and last name are required");
+        }
+        if (phoneNumber == null && email == null) {
+            throw new IllegalArgumentException("At least one of phone number or email is required");
+        }
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.activeRentals = new ArrayList<Book>();
     }
 
-    public void addActiveRental(Book book) {
-        this.activeRentals.add(book);
+    //GETTERS
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    public String getEmail() {
+        return email;
     }
 
-    public void removeActiveRental(Book book) {
-        this.activeRentals.remove(book);
+    //SETTERS
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
